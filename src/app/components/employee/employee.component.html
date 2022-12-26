@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    <table class="table table-hover">
+      <caption>List of Employee</caption>
+      <thead class="thead-dark">
+        <tr>
+          <th ></th>
+          <th >ID</th>
+          <th >Name</th>
+          <th >Email</th>
+          <th >Job Title</th>
+          <th >Phone</th>
+          <th >Image</th>
+          <th ></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listOfEmployee">
+          <th scope="row" ></th>
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.jobTitle}}</td>
+          <td>{{item.phone}}</td>
+          <td><img [src]="item.image" alt=""></td>
+          <td>
+            <button type="button" class="btn btn-warning" (click)="selectedEmployee(item.id)">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-danger" (click)="delete(item.id)">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <div  class="button btn btn-primary " (click)="showAdd()">Add Employee</div>
+  </div>
+
+  <div class="row" *ngIf="show">
+    <form >
+
+      <div class="form-group">
+        <label for="formGroupExampleInput">Name</label>
+        <input type="text" class="form-control" [(ngModel)]="employee.name" [ngModelOptions]="{standalone: true}" id="formGroupExampleInput" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Email</label>
+        <input type="text" class="form-control" [(ngModel)]="employee.email" [ngModelOptions]="{standalone: true}" id="formGroupExampleInput2" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput">Job Title</label>
+        <input type="text" class="form-control" [(ngModel)]="employee.jobTitle" [ngModelOptions]="{standalone: true}" id="formGroupExampleInput" placeholder="Job Title">
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput">Phone</label>
+        <input type="number" class="form-control" [(ngModel)]="employee.phone" [ngModelOptions]="{standalone: true}" id="formGroupExampleInput" placeholder="Phone">
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput">Image</label>
+        <input type="text" class="form-control" [(ngModel)]="employee.image" [ngModelOptions]="{standalone: true}" id="formGroupExampleInput" placeholder="Image">
+      </div>
+      <br>
+      <div class="form-group d-flex justify-content-center">
+        <input id="" class="btn btn-primary" (click)="saveEmployee()" type="button" value="Save">
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
